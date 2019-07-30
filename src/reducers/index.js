@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { LOAD_PRODUCTS_LIST } from "../actions/constants";
 
-const productsReducer = (state = [], action) => {
+const productsReducer = (state = null, action) => {
   switch (action.type) {
     case LOAD_PRODUCTS_LIST:
       return action.payload;
