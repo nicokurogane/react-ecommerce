@@ -1,5 +1,6 @@
 import React from "react";
 import ListRender from "./list-render/ListRender";
+import CategoriesList from './categories-list/CategoriesList';
 import "./App.css";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
               className="search-image"
             />
           </div>
-          <ListRender />
+          <CategoriesList />
         </div>
       </div>
     </div>
