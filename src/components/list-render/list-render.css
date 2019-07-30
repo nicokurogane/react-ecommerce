@@ -1,12 +1,15 @@
-
-.list-container{
-    margin-top: 3vh;
+.list-container {
+  margin-top: 3vh;
 }
 
 .product-item {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid grey;
+}
+
+.description{
+  font-size: 9px;
+  word-wrap: break-word;
 }

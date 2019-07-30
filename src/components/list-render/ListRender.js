@@ -6,22 +6,32 @@ import "./list-render.css";
 
 class ConnectedListRender extends React.Component {
   render() {
-    return <div className="list-container">{
-       
-      this.props.products === null ? 'no items': this.renderList()
-   
-   }</div>;
+    return (
+      <div className="list-container">
+        {this.props.products === null ? this.renderError() : this.renderList()}
+      </div>
+    );
   }
 
   renderList = () => {
-  return  this.props.products.rows.map(product => {
+    return this.props.products.rows.map(product => {
       return (
         <div className="product-item" key={product.product_id}>
+          <img
+            src={`https://backendapi.turing.com/images/products/${product.thumbnail}`}
+            alt="buy this product here!"
+          />
+          <div>
           <span>{product.name}</span>
-          <p>{product.description}</p>
+          <p className="description">{product.description}</p>
+          </div>
         </div>
       );
     });
+  };
+
+  renderError = () => {
+    return "no items";
   };
 
   componentDidMount() {
