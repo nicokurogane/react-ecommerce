@@ -1,0 +1,28 @@
+.app-header {
+  background-color: #0f1c38;
+  color: white;
+  padding: 5vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.side-panel {
+  width: 20%;
+  background-color: #cf5d00;
+  height: 86.71vh;
+}
+
+.main-body {
+  width: 80%;
+}
+
+.search-input{
+    border: none;
+}
+
+.search-image{
+    width: 20px;
+}
