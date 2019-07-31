@@ -2,7 +2,6 @@ import React from "react";
 import ProductsList from "./products-list/ProductsList";
 import CategoriesList from "./categories-list/CategoriesList";
 import ConnectedProductSearcher from './product-searcher/ProductSeacher';
-import CategoriesDetail from "./category-detail/CategoryDetail";
 import "./App.css";
 
 function App() {
