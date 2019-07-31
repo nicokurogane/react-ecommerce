@@ -1,5 +1,5 @@
 import React from "react";
-import ProductsList from "./list-render/ProductsList";
+import ProductsList from "./products-list/ProductsList";
 import CategoriesList from './categories-list/CategoriesList';
 import CategoriesDetail from './category-detail/CategoryDetail';
 import "./App.css";
@@ -7,7 +7,11 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <header className="app-header">turing ecommerce</header>
+      <header className="app-header"><span>turing ecommerce</span>
+      <div className="filters">
+      <span>   <CategoriesList /></span>
+      </div>      
+      </header>
       <div className="container">
         <div className="side-panel">
           <ul>
@@ -30,7 +34,7 @@ function App() {
               className="search-image"
             />
           </div>
-        <ProductsList />
+          <ProductsList />
         </div>
       </div>
     </div>

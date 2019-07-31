@@ -1,7 +1,9 @@
 .app-header {
   background-color: #0f1c38;
   color: white;
-  padding: 5vh;
+  padding:  5vh;
+  display: flex;
+  justify-content: space-around
 }
 
 .container {
