@@ -19,3 +19,8 @@ export const getProductsBySearchTerm = async term => {
   let serverResponse = await axiosInstance.get(`/products/search?query_string=${term}`);
   return serverResponse;
 };
+
+export const getProductsFilteredByCategory = async categoryId =>{
+  let serverResponse = await axiosInstance.get(`/products/inCategory/${categoryId}`);
+  return serverResponse;
+}

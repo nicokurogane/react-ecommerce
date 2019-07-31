@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchCategories } from "../../actions";
+import {
+  fetchCategories,
+  fetchFilteredProductsByCategory
+} from "../../actions";
 
 import "./categories-list.css";
 
@@ -15,15 +18,24 @@ class ConnectedCategoriesList extends React.Component {
     );
   }
 
+  handleClickCategory = id => {
+    this.props.fetchFilteredProductsByCategory(id);
+  };
+
   renderDropdownFilter = () => {
     return (
-      <div class="dropdown">
-        <button class="dropbtn">Categories</button>
-        <div class="dropdown-content">
+      <div className="dropdown">
+        <button className="dropbtn">Categories</button>
+        <div className="dropdown-content">
           {this.props.categories.rows.map(category => {
             return (
               <div className="category-item" key={category.category_id}>
-                <span className="title">{category.name}</span>
+                <button
+                  className="link"
+                  onClick={() => this.handleClickCategory(category.category_id)}
+                >
+                  {category.name}
+                </button>
               </div>
             );
           })}
@@ -47,7 +59,7 @@ const mapStateToProps = state => {
 
 const CategoriesList = connect(
   mapStateToProps,
-  { fetchCategories }
+  { fetchCategories, fetchFilteredProductsByCategory }
 )(ConnectedCategoriesList);
 
 export default CategoriesList;

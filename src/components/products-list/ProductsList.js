@@ -6,7 +6,6 @@ import "./list-render.css";
 
 class ConnectedProductListRender extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <div className="list-container">
         {this.props.products.length === 0 ? this.renderError() : this.renderList()}

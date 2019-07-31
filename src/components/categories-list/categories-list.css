@@ -42,3 +42,19 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: transparent;}
+
+
+/* make the button look like a link*/
+
+button.link {
+  overflow: visible;
+  width: auto;
+  font-size: 1em;
+  text-align: left;
+  color: #eb7107;
+  background: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
