@@ -1,0 +1,15 @@
+.main-body {
+  width: 80%;
+}
+
+.search-input {
+  border: none;
+}
+
+.search-image {
+  width: 20px;
+}
+
+.search-container {
+  display: flex;
+}
