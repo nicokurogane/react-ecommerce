@@ -11,12 +11,14 @@ import App from "./components/App.js";
 import * as serviceWorker from "./serviceWorker";
 
 import Home from './pages/home/Home';
+import ConnectedProductDetails  from './pages/product-details/ProductDetails';
 
 ReactDOM.render(
   <Provider store={createStore(ecommerceApp, applyMiddleware(thunk))}>
     <Router>
       <App>
-        <Switch>
+        <Switch> 
+          <Route path="/product-detail/:id" component={ConnectedProductDetails} />
           <Route path="/" exact component={Home} />
         </Switch>
       </App>
