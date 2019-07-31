@@ -17,12 +17,12 @@ class ConnectedProductListRender extends React.Component {
   renderList = () => {
     return this.props.products.map(product => {
       return (
-        <div className="product-item" key={product.product_id}>
+        <div className="card" key={product.product_id}>
           <img
             src={`https://backendapi.turing.com/images/products/${product.thumbnail}`}
             alt="buy this product here!"
           />
-          <div>
+          <div className="container">
           <span>{product.name}</span>
           <p className="description">{product.description}</p>
           </div>
