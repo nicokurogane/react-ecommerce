@@ -1,6 +1,7 @@
 import React from "react";
-import ListRender from "./list-render/ListRender";
+import ProductsList from "./list-render/ProductsList";
 import CategoriesList from './categories-list/CategoriesList';
+import CategoriesDetail from './category-detail/CategoryDetail';
 import "./App.css";
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
               className="search-image"
             />
           </div>
-          <CategoriesList />
+        <ProductsList />
         </div>
       </div>
     </div>

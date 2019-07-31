@@ -9,3 +9,8 @@ export const getAllCategories = async() =>{
    let serverResponse = await axiosInstance.get("/categories");
    return serverResponse;
 }
+
+export const getCategoryDetails = async(id)=>{
+   let serverResponse = await axiosInstance.get(`/categories/${id}`);
+   return serverResponse;
+}

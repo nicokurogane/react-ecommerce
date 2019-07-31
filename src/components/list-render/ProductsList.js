@@ -4,17 +4,18 @@ import { fetchProducts } from "../../actions";
 
 import "./list-render.css";
 
-class ConnectedListRender extends React.Component {
+class ConnectedProductListRender extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <div className="list-container">
-        {this.props.products === null ? this.renderError() : this.renderList()}
+        {this.props.products.length === 0 ? this.renderError() : this.renderList()}
       </div>
     );
   }
 
   renderList = () => {
-    return this.props.products.rows.map(product => {
+    return this.props.products.map(product => {
       return (
         <div className="product-item" key={product.product_id}>
           <img
@@ -40,12 +41,12 @@ class ConnectedListRender extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { products: state.products };
+  return { products: state.products.list };
 };
 
-const ListRender = connect(
+const ProductsList = connect(
   mapStateToProps,
   { fetchProducts }
-)(ConnectedListRender);
+)(ConnectedProductListRender);
 
-export default ListRender;
+export default ProductsList;
