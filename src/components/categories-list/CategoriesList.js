@@ -6,6 +6,7 @@ import {
 } from "../../actions";
 
 import "./categories-list.css";
+import arrowDown from "../../assets/menu-down.png";
 
 class ConnectedCategoriesList extends React.Component {
   render() {
@@ -25,13 +26,16 @@ class ConnectedCategoriesList extends React.Component {
   renderDropdownFilter = () => {
     return (
       <div className="dropdown">
-        <button className="dropbtn">Categories</button>
+        <button className="dropbtn">
+          Categories
+          <img src={arrowDown} alt="menu-down"  className="arrow-menu"/>
+        </button>
         <div className="dropdown-content">
           {this.props.categories.rows.map(category => {
             return (
               <div className="category-item" key={category.category_id}>
                 <button
-                  className="link"
+                  className="link-submenu"
                   onClick={() => this.handleClickCategory(category.category_id)}
                 >
                   {category.name}

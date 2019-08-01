@@ -1,0 +1,24 @@
+.product-searcher-container{
+    margin: 0 2vh;
+}
+
+.search-input{
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #CCC 1px;
+    margin-right: 1vh;
+}
+
+.search-button {
+  background-color: #eb7107;
+  border: none;
+  height: 100%;
+  transition: background-color 0.25s ease-in-out;
+}
+
+.search-button:hover {
+    background-color: #bf360c;
+}

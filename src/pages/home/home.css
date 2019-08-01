@@ -1,15 +1,12 @@
-.main-body {
-  width: 80%;
-}
-
-.search-input {
-  border: none;
-}
 
 .search-image {
   width: 20px;
+  height: 20px;
 }
 
 .search-container {
+  padding: 1.5vh;
   display: flex;
 }
+
+

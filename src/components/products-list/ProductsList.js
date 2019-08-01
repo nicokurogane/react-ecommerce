@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchProducts } from "../../actions";
 
-import "./list-render.css";
+import "./product-list.css";
 
 class ConnectedProductListRender extends React.Component {
   render() {
@@ -19,19 +19,21 @@ class ConnectedProductListRender extends React.Component {
   renderList = () => {
     return this.props.products.map(product => {
       return (
-      
-          <div className="card"  key={product.product_id}>
+        <div className="card" key={product.product_id}>
+          <div className="product-photo-container">
             <img
               src={`https://backendapi.turing.com/images/products/${product.thumbnail}`}
               alt="buy this product here!"
             />
-            <div className="container">
-              <span>{product.name}</span>
-              <p className="description">{product.description}</p>
-              <Link to={`/product-detail/${product.product_id}`}>Check it out!</Link>
-            </div>
           </div>
-   
+          <div className="container">
+            <span>{product.name}</span>
+            <p className="description">{product.description}</p>
+            <Link to={`/product-detail/${product.product_id}`} className="link">
+              Check it out!
+            </Link>
+          </div>
+        </div>
       );
     });
   };
