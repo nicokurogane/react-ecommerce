@@ -3,7 +3,8 @@ import {
   LOAD_CATEGORIES_LIST,
   LOAD_CATEGORY,
   SEARCH_PRODUCTS,
-  FILTER_PRODUCT_BY_CATEGORY
+  FILTER_PRODUCT_BY_CATEGORY,
+  FETCH_PRODUCT_DETAILS
 } from "./constants";
 
 import {
@@ -11,7 +12,8 @@ import {
   getAllCategories,
   getCategoryDetails,
   getProductsBySearchTerm,
-  getProductsFilteredByCategory
+  getProductsFilteredByCategory,
+  getProductDetails
 } from "../data/request-handler";
 
 export const fetchProducts = () => async dispatch => {
@@ -38,3 +40,8 @@ export const fetchFilteredProductsByCategory = categoryId => async dispatch => {
   const response = await getProductsFilteredByCategory(categoryId);
   dispatch({ type: FILTER_PRODUCT_BY_CATEGORY, payload: response.data.rows });
 };
+
+export const fetchProductDetail =productId => async dispatch =>{
+  const response = await getProductDetails(productId);
+  dispatch({ type: FETCH_PRODUCT_DETAILS , payload: response.data[0]})
+}

@@ -1,14 +1,46 @@
 import React from "react";
 import { connect } from "react-redux";
+import { fetchProductDetail } from "../../actions";
+
+import "./product-details.css";
 
 class ConnectedProductDetails extends React.Component {
-  render(){
-    return(
+  render() {
+    console.log(this.props.selectedProduct);
+    if(this.props.selectedProduct === null){
+      return <div className="product-details-container">LOADING</div>
+    }
+
+    const {name,price,discounted_price,description,image} = this.props.selectedProduct;
+    return (
       <div className="product-details-container">
-        PRODUCTO DETALLE ID {this.props.match.params.id}
+        <div className="left-panel">
+          <img
+            src={`https://backendapi.turing.com/images/products/${image}`}
+            alt="buy this product here!"
+          />
+        </div>
+        <div className="right-panel" >
+          <span>{name}</span>
+          <span>{`price: ${price}   discount:${discounted_price}`}</span>
+          <p>{description}</p>
+        </div>
       </div>
-    )
+    );
+  }
+
+  componentDidMount() {
+    this.props.fetchProductDetail(this.props.match.params.id);
   }
 }
 
-export default ConnectedProductDetails;
+const mapStateToProps = state => {
+  return { selectedProduct: state.products.selectedProduct };
+};
+
+const ProductDetails = connect(
+  mapStateToProps,
+  { fetchProductDetail }
+)(ConnectedProductDetails);
+
+export default ProductDetails;

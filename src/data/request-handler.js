@@ -24,3 +24,8 @@ export const getProductsFilteredByCategory = async categoryId =>{
   let serverResponse = await axiosInstance.get(`/products/inCategory/${categoryId}`);
   return serverResponse;
 }
+
+export const getProductDetails = async productId => {
+  let serverResponse = await axiosInstance.get(`/products/${productId}/details`);
+  return serverResponse;
+}
