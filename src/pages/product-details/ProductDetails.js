@@ -7,11 +7,17 @@ import "./product-details.css";
 class ConnectedProductDetails extends React.Component {
   render() {
     console.log(this.props.selectedProduct);
-    if(this.props.selectedProduct === null){
-      return <div className="product-details-container">LOADING</div>
+    if (this.props.selectedProduct === null) {
+      return <div className="product-details-container">LOADING</div>;
     }
 
-    const {name,price,discounted_price,description,image} = this.props.selectedProduct;
+    const {
+      name,
+      price,
+      discounted_price,
+      description,
+      image
+    } = this.props.selectedProduct;
     return (
       <div className="product-details-container">
         <div className="left-panel">
@@ -20,10 +26,10 @@ class ConnectedProductDetails extends React.Component {
             alt="buy this product here!"
           />
         </div>
-        <div className="right-panel" >
-          <span>{name}</span>
+        <div className="right-panel">
+          <span className="product-name">{name}</span>
           <span>{`price: ${price}   discount:${discounted_price}`}</span>
-          <p>{description}</p>
+          <p className="product-description">{description}</p>
         </div>
       </div>
     );

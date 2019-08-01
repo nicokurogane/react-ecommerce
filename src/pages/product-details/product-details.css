@@ -1,11 +1,26 @@
-.product-details-container{
-    display: flex;
-    justify-content: center;
+.product-details-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10vh;
 }
 
-.right-panel{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.product-name {
+  font-size: 3rem;
+}
+
+.product-description {
+  font-size: 0.9rem;
+}
+
+.left-panel {
+  padding: 7vh;
+}
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7vh;
 }
