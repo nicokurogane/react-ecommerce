@@ -105,5 +105,5 @@ export const showMessageToUser = () => async dispatch => {
 };
 
 export const hideMessageToUser = () => async dispatch => {
-  dispatch({ type: HIDE_MESSAGE });
+  dispatch({ type: HIDE_MESSAGE }); 
 };
