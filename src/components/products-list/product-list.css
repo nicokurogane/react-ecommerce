@@ -1,15 +1,14 @@
 .list-container {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 33.3% 33.3% 33.3%;
   margin-top: 3vh;
 }
 
 .description {
-
   font-size: 9px;
   word-wrap: break-word;
   overflow: hidden;
-   text-overflow: ellipsis
+  text-overflow: ellipsis;
 }
 
 .card {
@@ -20,7 +19,7 @@
   padding: 2vh;
 }
 
-.product-photo-container{
+.product-photo-container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -36,12 +35,17 @@
 
 /* Add some padding inside the card container */
 .container {
-  padding: 2px 16px;
+  padding: 3vh;
   display: flex;
   flex-direction: column;
-
 }
 
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1vh 0;
+  font-weight: bold;
+}
 
 /* LINK EFFECT*/
 .link {
@@ -56,6 +60,7 @@
   color: #333;
   vertical-align: bottom;
   transition: color 0.3s ease-out;
+  font-size: 0.8rem;
 }
 
 .link::before {

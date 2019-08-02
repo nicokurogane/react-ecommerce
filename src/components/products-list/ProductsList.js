@@ -22,12 +22,21 @@ class ConnectedProductListRender extends React.Component {
         <div className="card" key={product.product_id}>
           <div className="product-photo-container">
             <img
-              src={`https://backendapi.turing.com/images/products/${product.thumbnail}`}
+              src={`https://backendapi.turing.com/images/products/${
+                product.thumbnail
+              }`}
               alt="buy this product here!"
             />
           </div>
           <div className="container">
-            <span>{product.name}</span>
+            <div className="container-header">
+              <span>{product.name}</span>
+              <span>{`$${
+                product.discounted_price === "0.00"
+                  ? product.price
+                  : product.discounted_price
+              }`}</span>
+            </div>
             <p className="description">{product.description}</p>
             <Link to={`/product-detail/${product.product_id}`} className="link">
               Check it out!

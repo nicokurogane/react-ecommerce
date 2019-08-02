@@ -38,8 +38,36 @@
   margin-bottom: 2vh;
 }
 
-.product-reviews-container{
+.product-reviews-container {
   padding: 0 18vw;
-  margin-top: 5vh;
+  margin: 0 5vh;
 }
 
+.normal-price {
+  color: #8f8a8a;
+  margin-right: 2vh;
+  text-decoration: line-through;
+}
+
+.final-price {
+  color: #eb7107;
+  font-size: 1.8rem;
+}
+
+.add-to-cart-button {
+  margin: 0 2vh;
+  background-color: #eb7107;
+  border: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.add-to-cart-button:hover {
+  background-color: #0f1c38;
+}
+
+.review-title{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 3vh 0;
+  border-bottom: 1px solid; 
+}
