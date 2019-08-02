@@ -1,0 +1,10 @@
+.message-popup-container {
+  background-color: #db2316;
+  color: #ffffff;
+  border-radius: 12px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 6vh;
+  transition: opacity 0.25s ease-in-out;
+}

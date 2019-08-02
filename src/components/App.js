@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import MessagePopUp from "./message-popup/MessagePopUp";
+
 import "./App.css";
 
 function App(props) {
@@ -18,6 +20,7 @@ function App(props) {
         </div>
       </header>
       <div className="container">{props.children}</div>
+      <MessagePopUp />
     </header>
   );
 }

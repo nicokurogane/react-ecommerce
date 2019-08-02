@@ -5,7 +5,9 @@ import {
   SEARCH_PRODUCTS,
   FILTER_PRODUCT_BY_CATEGORY,
   FETCH_PRODUCT_DETAILS,
-  FETCH_PRODUCT_REVIEWS
+  FETCH_PRODUCT_REVIEWS,
+  SHOW_MESSAGE,
+  HIDE_MESSAGE
 } from "./constants";
 
 import {
@@ -19,18 +21,45 @@ import {
 } from "../data/request-handler";
 
 export const fetchProducts = () => async dispatch => {
-  const response = await getAllProducts();
-  dispatch({ type: LOAD_PRODUCTS_LIST, payload: response.data.rows });
+  await getAllProducts()
+    .then(response => {
+      dispatch({ type: LOAD_PRODUCTS_LIST, payload: response.data.rows });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: SHOW_MESSAGE,
+        payload: { message: "Couldn't connect to the server. try again later" }
+      });
+    });
 };
 
 export const fetchCategories = () => async dispatch => {
-  const response = await getAllCategories();
-  dispatch({ type: LOAD_CATEGORIES_LIST, payload: response.data });
+  await getAllCategories()
+    .then(response => {
+      dispatch({ type: LOAD_CATEGORIES_LIST, payload: response.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: SHOW_MESSAGE,
+        payload: { message: "Couldn't connect to the server. try again later" }
+      });
+    });
 };
 
 export const fetchCategory = id => async dispatch => {
-  const response = await getCategoryDetails(id);
-  dispatch({ type: LOAD_CATEGORY, payload: response.data });
+  await getCategoryDetails(id)
+    .then(response => {
+      dispatch({ type: LOAD_CATEGORY, payload: response.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: SHOW_MESSAGE,
+        payload: { message: "Couldn't connect to the server. try again later" }
+      });
+    });
 };
 
 export const searchProductsByTerm = term => async dispatch => {
@@ -43,12 +72,38 @@ export const fetchFilteredProductsByCategory = categoryId => async dispatch => {
   dispatch({ type: FILTER_PRODUCT_BY_CATEGORY, payload: response.data.rows });
 };
 
-export const fetchProductDetail = productId => async dispatch =>{
-  const response = await getProductDetails(productId);
-  dispatch({ type: FETCH_PRODUCT_DETAILS , payload: response.data[0]})
-}
+export const fetchProductDetail = productId => async dispatch => {
+  await getProductDetails(productId)
+    .then(response => {
+      dispatch({ type: FETCH_PRODUCT_DETAILS, payload: response.data[0] });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: SHOW_MESSAGE,
+        payload: { message: "Couldn't connect to the server. try again later" }
+      });
+    });
+};
 
 export const fetchProductReviews = productId => async dispatch => {
-  const response = await getProductReviews(productId);
-  dispatch({ type: FETCH_PRODUCT_REVIEWS, payload: response.data})
-}
+  await getProductReviews(productId)
+    .then(response => {
+      dispatch({ type: FETCH_PRODUCT_REVIEWS, payload: response.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: SHOW_MESSAGE,
+        payload: { message: "Couldn't connect to the server. try again later" }
+      });
+    });
+};
+
+export const showMessageToUser = () => async dispatch => {
+  dispatch({ type: SHOW_MESSAGE, payload: { message: "test message" } });
+};
+
+export const hideMessageToUser = () => async dispatch => {
+  dispatch({ type: HIDE_MESSAGE });
+};

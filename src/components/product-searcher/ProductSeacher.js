@@ -19,14 +19,13 @@ class ConnectedProductSearcher extends React.Component {
   render() {
     return (
       <div className="product-searcher-container">
- 
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search your product here"
-            value={this.state.searchTerm}
-            onChange={e => this.handleChangeText(e)}
-          />
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search your product here"
+          value={this.state.searchTerm}
+          onChange={e => this.handleChangeText(e)}
+        />
 
         <button onClick={this.onClickSearch} className="search-button">
           <img

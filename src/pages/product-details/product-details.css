@@ -65,9 +65,21 @@
   background-color: #0f1c38;
 }
 
-.review-title{
+.review-title {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 3vh 0;
-  border-bottom: 1px solid; 
+  border-bottom: 1px solid;
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .product-reviews-container {
+    padding: 0 9vw;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .product-reviews-container {
+    padding: 0 3vw;
+  }
 }

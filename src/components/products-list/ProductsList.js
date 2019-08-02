@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchProducts } from "../../actions";
+import { fetchProducts, showMessageToUser } from "../../actions";
 
 import "./product-list.css";
 
@@ -53,6 +53,7 @@ class ConnectedProductListRender extends React.Component {
 
   componentDidMount() {
     this.props.fetchProducts();
+    //this.props.showMessageToUser(); 
   }
 }
 
@@ -62,7 +63,7 @@ const mapStateToProps = state => {
 
 const ProductsList = connect(
   mapStateToProps,
-  { fetchProducts }
+  { fetchProducts,showMessageToUser  }
 )(ConnectedProductListRender);
 
 export default ProductsList;

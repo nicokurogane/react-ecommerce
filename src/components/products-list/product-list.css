@@ -83,3 +83,17 @@
   transform: translateY(0);
   transition: transform 0.25s ease-out;
 }
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .list-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .list-container {
+    display: grid;
+    grid-template-columns: 95%;
+  }
+}

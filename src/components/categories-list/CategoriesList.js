@@ -28,7 +28,7 @@ class ConnectedCategoriesList extends React.Component {
       <div className="dropdown">
         <button className="dropbtn">
           Categories
-          <img src={arrowDown} alt="menu-down"  className="arrow-menu"/>
+          <img src={arrowDown} alt="menu-down" className="arrow-menu" />
         </button>
         <div className="dropdown-content">
           {this.props.categories.rows.map(category => {
