@@ -10,3 +10,51 @@
   display: flex;
   justify-content: center;
 }
+
+
+.links-container{
+  display: flex;
+}
+
+.link-header{
+  color: #ffffff;
+  margin-right: 2vh;
+}
+
+
+/* LINK EFFECT*/
+.link-header {
+  text-decoration: none;
+  line-height: 1;
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  padding: 5px 5px;
+  overflow: hidden;
+  color: #ffffff;
+  vertical-align: bottom;
+  transition: color 0.3s ease-out;
+  font-size: 0.8rem;
+}
+
+.link-header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  transform: translateY(calc(100% - 2px));
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(60deg, #01579b 0%, #d84315 100%);
+  transition: transform 0.25s ease-out;
+}
+
+.link-header:hover {
+  color: #fff;
+}
+.link-header:hover::before {
+  transform: translateY(0);
+  transition: transform 0.25s ease-out;
+}
+

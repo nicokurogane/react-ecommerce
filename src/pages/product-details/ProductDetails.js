@@ -55,7 +55,7 @@ class ConnectedProductDetails extends React.Component {
                   <div className="review-container">
                     <div className="review-header">
                       <span>{review.name}</span>
-                      <span>posted on {new Date(review.created_on).toUTCString()}</span>
+                      <span>posted on {new Date(review.created_on).toDateString()}</span>
                     </div>
                     <div className="review-body">{review.review}</div>
                     <hr />
