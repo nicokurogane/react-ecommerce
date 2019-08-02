@@ -53,7 +53,6 @@ class ConnectedProductListRender extends React.Component {
 
   componentDidMount() {
     this.props.fetchProducts();
-    //this.props.showMessageToUser(); 
   }
 }
 
@@ -63,7 +62,7 @@ const mapStateToProps = state => {
 
 const ProductsList = connect(
   mapStateToProps,
-  { fetchProducts,showMessageToUser  }
+  { fetchProducts, showMessageToUser }
 )(ConnectedProductListRender);
 
 export default ProductsList;

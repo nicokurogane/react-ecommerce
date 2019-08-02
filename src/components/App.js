@@ -9,7 +9,6 @@ function App(props) {
     <header className="App">
       <header className="app-header">
         <span>Turing Ecommerce</span>
-
         <div className="links-container">
           <Link to="/" className="link-header">
             Home
