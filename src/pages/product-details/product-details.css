@@ -26,3 +26,20 @@
   align-items: center;
   padding: 0 7vh;
 }
+
+.review-container {
+  margin: 2vh;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 2vh;
+}
+
+.product-reviews-container{
+  padding: 0 18vw;
+  margin-top: 5vh;
+}
+

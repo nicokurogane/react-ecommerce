@@ -29,3 +29,8 @@ export const getProductDetails = async productId => {
   let serverResponse = await axiosInstance.get(`/products/${productId}/details`);
   return serverResponse;
 }
+
+export const getProductReviews = async productId => {
+  let serverResponse = await axiosInstance.get(`/products/${productId}/reviews`);
+  return serverResponse;
+}

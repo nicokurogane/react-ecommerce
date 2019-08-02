@@ -4,7 +4,8 @@ import {
   LOAD_CATEGORY,
   SEARCH_PRODUCTS,
   FILTER_PRODUCT_BY_CATEGORY,
-  FETCH_PRODUCT_DETAILS
+  FETCH_PRODUCT_DETAILS,
+  FETCH_PRODUCT_REVIEWS
 } from "./constants";
 
 import {
@@ -13,7 +14,8 @@ import {
   getCategoryDetails,
   getProductsBySearchTerm,
   getProductsFilteredByCategory,
-  getProductDetails
+  getProductDetails,
+  getProductReviews
 } from "../data/request-handler";
 
 export const fetchProducts = () => async dispatch => {
@@ -41,7 +43,12 @@ export const fetchFilteredProductsByCategory = categoryId => async dispatch => {
   dispatch({ type: FILTER_PRODUCT_BY_CATEGORY, payload: response.data.rows });
 };
 
-export const fetchProductDetail =productId => async dispatch =>{
+export const fetchProductDetail = productId => async dispatch =>{
   const response = await getProductDetails(productId);
   dispatch({ type: FETCH_PRODUCT_DETAILS , payload: response.data[0]})
+}
+
+export const fetchProductReviews = productId => async dispatch => {
+  const response = await getProductReviews(productId);
+  dispatch({ type: FETCH_PRODUCT_REVIEWS, payload: response.data})
 }
