@@ -2,15 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchShoppingCartById } from "../../actions/";
 import LocalStorageHandler from "../../data/local-storage/LocalStorage";
+import TotalDisplay from "../../components/total-display/TotalDisplay";
 
 import "./cart-detail.css";
 
 class ConnectedCartDetail extends React.Component {
+
   render() {
     return (
       <div className="cart-detail-container">
-        <h2>SHOPPING CART</h2>
         <div className="product-list">
+          <h2>SHOPPING CART</h2>
           <table>
             <thead>
               <tr>
@@ -31,7 +33,7 @@ class ConnectedCartDetail extends React.Component {
                   quantity,
                   subtotal
                 } = product;
-                
+
                 return (
                   <tr key={item_id}>
                     <th>
@@ -50,18 +52,20 @@ class ConnectedCartDetail extends React.Component {
             </tbody>
           </table>
         </div>
+        <div>
+          <TotalDisplay total={this.state.totalAmount} />
+        </div>
       </div>
     );
   }
 
   componentDidMount() {
-    // console.log(this.props.cart);
-    if (!LocalStorageHandler.getShoppingCartIdFromLocalStorage()) {
-      this.props.fetchShoppingCartById(
-        LocalStorageHandler.getShoppingCartIdFromLocalStorage()
-      );
+    if (this.props.cart.length === 0) {
+      let shoppingCartId = LocalStorageHandler.getShoppingCartIdFromLocalStorage();
+      if (!shoppingCartId) {
+        this.props.fetchShoppingCartById(shoppingCartId);
+      }
     }
-    console.log(this.props.cart);
   }
 }
 
