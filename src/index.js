@@ -12,6 +12,7 @@ import * as serviceWorker from "./serviceWorker";
 
 import Home from "./pages/home/Home";
 import ConnectedProductDetails from "./pages/product-details/ProductDetails";
+import CartDetails from './pages/cart-details/CartDetails';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -22,6 +23,7 @@ ReactDOM.render(
     <Router>
       <App>
         <Switch>
+          <Route path="/cart/details" exact component={CartDetails} />
           <Route
             path="/product-detail/:id"
             component={ConnectedProductDetails}

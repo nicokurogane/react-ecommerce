@@ -16,6 +16,9 @@ function App(props) {
           <Link to="/" className="link-header">
             Login
           </Link>
+          <Link to="/cart/details" className="link-header">
+            My Cart
+          </Link>
         </div>
       </header>
       <div className="container">{props.children}</div>

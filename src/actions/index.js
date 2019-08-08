@@ -8,7 +8,8 @@ import {
   FETCH_PRODUCT_REVIEWS,
   SHOW_MESSAGE,
   HIDE_MESSAGE,
-  ADD_PRODUCT_TO_CART
+  ADD_PRODUCT_TO_CART,
+  LOAD_SHOPPING_CART
 } from "./constants";
 
 import {
@@ -19,7 +20,8 @@ import {
   getProductsFilteredByCategory,
   getProductDetails,
   getProductReviews,
-  sendProductToCart
+  sendProductToCart,
+  getShoppingCart
 } from "../data/request-handler";
 
 export const fetchProducts = () => async dispatch => {
@@ -110,7 +112,11 @@ export const hideMessageToUser = () => async dispatch => {
   dispatch({ type: HIDE_MESSAGE });
 };
 
-export const addProductToCart = ( cartId, productId, attributes ) => async dispatch => {
+export const addProductToCart = (
+  cartId,
+  productId,
+  attributes
+) => async dispatch => {
   await sendProductToCart(cartId, productId, attributes)
     .then(response => {
       dispatch({ type: ADD_PRODUCT_TO_CART, payload: response.data });
@@ -120,6 +126,20 @@ export const addProductToCart = ( cartId, productId, attributes ) => async dispa
       dispatch({
         type: SHOW_MESSAGE,
         payload: { message: "Couldn't add product to cart. try again later" }
+      });
+    });
+};
+
+export const fetchShoppingCartById = cartId => async dispatch => {
+  await getShoppingCart(cartId)
+    .then(response => {
+      dispatch({ type: LOAD_SHOPPING_CART, payload: response.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: SHOW_MESSAGE,
+        payload: { message: "Couldn't get your shopping cart. try again later" }
       });
     });
 };

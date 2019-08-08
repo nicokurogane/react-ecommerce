@@ -36,7 +36,12 @@ export const getProductReviews = async productId => {
 }
 
 export const getShoppingCartId  = async () => {
-  let serverResponse = await axiosInstance.get('shoppingcart/generateUniqueId');
+  let serverResponse = await axiosInstance.get('/shoppingcart/generateUniqueId');
+  return serverResponse;
+}
+
+export const getShoppingCart = async cartId =>{
+  let serverResponse = await axiosInstance.get(`/shoppingcart/${cartId}`);
   return serverResponse;
 }
 
@@ -48,3 +53,5 @@ export const sendProductToCart = async (cartId, productId, attributes) =>{
   });
   return serverResponse;
 }
+
+
