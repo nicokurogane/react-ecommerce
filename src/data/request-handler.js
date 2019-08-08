@@ -34,3 +34,17 @@ export const getProductReviews = async productId => {
   let serverResponse = await axiosInstance.get(`/products/${productId}/reviews`);
   return serverResponse;
 }
+
+export const getShoppingCartId  = async () => {
+  let serverResponse = await axiosInstance.get('shoppingcart/generateUniqueId');
+  return serverResponse;
+}
+
+export const sendProductToCart = async (cartId, productId, attributes) =>{
+  let serverResponse = await axiosInstance.post('shoppingcart/add',{
+    cart_id: cartId,
+    product_id: productId,
+    attributes    
+  });
+  return serverResponse;
+}

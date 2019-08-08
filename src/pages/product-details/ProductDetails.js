@@ -1,6 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchProductDetail, fetchProductReviews } from "../../actions";
+import {
+  fetchProductDetail,
+  fetchProductReviews,
+  addProductToCart
+} from "../../actions";
+
+import LocalStorageHandler from "../../data/local-storage/LocalStorage";
+import { getShoppingCartId } from "../../data/request-handler";
 
 import "./product-details.css";
 import cart from "../../assets/cart.png";
@@ -39,7 +46,10 @@ class ConnectedProductDetails extends React.Component {
                   <span className="final-price">{`$${discounted_price}`}</span>
                 </>
               )}
-              <button className="add-to-cart-button">
+              <button
+                className="add-to-cart-button"
+                onClick={this.addProductToCart}
+              >
                 <img src={cart} alt="cart" />
               </button>
             </div>
@@ -69,6 +79,28 @@ class ConnectedProductDetails extends React.Component {
     );
   }
 
+  addProductToCart = () => {
+    if (LocalStorageHandler.getShoppingCartIdFromLocalStorage() === "") {
+      this.fetchShoppingCartId();
+    }
+
+    let shoppingCartId = LocalStorageHandler.getShoppingCartIdFromLocalStorage();
+
+    this.props.addProductToCart(shoppingCartId, this.props.match.params.id, "");
+  };
+
+  fetchShoppingCartId() {
+    getShoppingCartId()
+      .then(response => {
+        LocalStorageHandler.saveShoppingCartIdToLocalStorage(
+          response.data.cart_id
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   componentDidMount() {
     this.props.fetchProductDetail(this.props.match.params.id);
     this.props.fetchProductReviews(this.props.match.params.id);
@@ -84,7 +116,7 @@ const mapStateToProps = state => {
 
 const ProductDetails = connect(
   mapStateToProps,
-  { fetchProductDetail, fetchProductReviews }
+  { fetchProductDetail, fetchProductReviews, addProductToCart }
 )(ConnectedProductDetails);
 
 export default ProductDetails;
