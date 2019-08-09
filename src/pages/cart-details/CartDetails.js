@@ -1,6 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchShoppingCartById, setCartTotalAmount } from "../../actions/";
+import {
+  fetchShoppingCartById,
+  setCartTotalAmount,
+  deleteAllCartItems
+} from "../../actions/";
 import LocalStorageHandler from "../../data/local-storage/LocalStorage";
 import TotalDisplay from "../../components/total-display/TotalDisplay";
 
@@ -16,7 +20,7 @@ class ConnectedCartDetail extends React.Component {
           <table className="product-list-table">
             <thead>
               <tr>
-                <th colspan="2">product</th>
+                <th colSpan="2">product</th>
                 <th>price</th>
                 <th>quantity</th>
                 <th>subtotal</th>
@@ -45,12 +49,26 @@ class ConnectedCartDetail extends React.Component {
                     <td> {name}</td>
                     <td>{CurrencyFormatter.formatNumberToUSCurrency(price)}</td>
                     <td>{quantity}</td>
-                    <td>{CurrencyFormatter.formatNumberToUSCurrency(subtotal)}</td>
+                    <td>
+                      {CurrencyFormatter.formatNumberToUSCurrency(subtotal)}
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
+
+          <div
+            className="cart-actions-container"
+            style={{ display: this.props.cart.length > 0 ? "block" : "none" }}
+          >
+            <button
+              className="clear-cart-button"
+              onClick={this.onClearCartClick}
+            >
+              Clear Cart
+            </button>
+          </div>
         </div>
         <div>
           <TotalDisplay total={this.props.total} />
@@ -58,6 +76,10 @@ class ConnectedCartDetail extends React.Component {
       </div>
     );
   }
+
+  onClearCartClick = () => {
+    this.props.deleteAllCartItems();
+  };
 
   componentDidMount() {
     console.log(this.props.cart);
@@ -80,7 +102,7 @@ const mapStateToProps = state => {
 
 const CartDetail = connect(
   mapStateToProps,
-  { fetchShoppingCartById, setCartTotalAmount }
+  { fetchShoppingCartById, setCartTotalAmount, deleteAllCartItems }
 )(ConnectedCartDetail);
 
 export default CartDetail;

@@ -2,7 +2,8 @@ import {
   ADD_PRODUCT_TO_CART,
   LOAD_SHOPPING_CART,
   SET_CART_TOTAL_AMOUNT,
-  DELETE_ITEM_FROM_CART
+  DELETE_ITEM_FROM_CART,
+  CLEAR_CART
 } from "../actions/constants";
 
 const initialState = {
@@ -23,11 +24,13 @@ const cartReducer = (state = initialState, action) => {
       }, 0);
       return { ...state, total };
     case DELETE_ITEM_FROM_CART:
- //     let list = state.list.filter(product =>{
-  //      if(product)
-  //    }); 
+      //     let list = state.list.filter(product =>{
+      //      if(product)
+      //    });
 
       return { ...state, list: action.payload };
+    case CLEAR_CART:
+      return { ...state, list: []};
     default:
       return state;
   }

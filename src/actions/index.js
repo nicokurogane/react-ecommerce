@@ -151,6 +151,10 @@ export const setCartTotalAmount = () => {
   return { type: SET_CART_TOTAL_AMOUNT };
 };
 
-export const deleteItemFormCart = (itemId) =>{
-  return { type: DELETE_ITEM_FROM_CART, payload: itemId}
-}
+export const deleteItemFormCart = itemId => {
+  return { type: DELETE_ITEM_FROM_CART, payload: itemId };
+};
+
+export const deleteAllCartItems = () => {
+  return { type: CLEAR_CART };
+};
