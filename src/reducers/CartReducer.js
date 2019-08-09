@@ -24,11 +24,9 @@ const cartReducer = (state = initialState, action) => {
       }, 0);
       return { ...state, total };
     case DELETE_ITEM_FROM_CART:
-      let list = state.list.filter(product => {
-        if (product.item_id !== action.payload) {
-          return product;
-        }
-      });
+      let list = state.list.filter(
+        product => product.item_id !== action.payload
+      );
       return { ...state, list };
     case CLEAR_CART:
       return { ...state, list: [] };

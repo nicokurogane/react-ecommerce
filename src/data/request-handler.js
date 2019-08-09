@@ -55,3 +55,12 @@ export const sendProductToCart = async (cartId, productId, attributes) =>{
 }
 
 
+export const getShippingRegions = async () => {
+  let serverResponse = await axiosInstance.get('/shipping/regions');
+  return serverResponse;
+}
+
+export const getShippingCostAndDaysByRegionId = async (shippingRegionId) => {
+  let serverResponse = await axiosInstance.get(`/shipping/regions/${shippingRegionId}`);
+  return serverResponse;
+}

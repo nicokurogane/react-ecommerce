@@ -9,6 +9,7 @@ import {
 import LocalStorageHandler from "../../data/local-storage/LocalStorage";
 import TotalDisplay from "../../components/total-display/TotalDisplay";
 import RemoveButton from "../../components/remove-button/RemoveButton";
+import ShippingDetail from "../../components/shipping-detail/ShippingDetail";
 
 import CurrencyFormatter from "../../utilities/CurrencyFormatter";
 
@@ -83,6 +84,7 @@ class ConnectedCartDetail extends React.Component {
         </div>
         <div>
           <TotalDisplay total={this.props.total} />
+          <ShippingDetail />
         </div>
       </div>
     );
@@ -90,11 +92,12 @@ class ConnectedCartDetail extends React.Component {
 
   onClearCartClick = () => {
     this.props.deleteAllCartItems();
+    this.props.setCartTotalAmount();
   };
 
   onRemoveItemClick = itemId => {
-
-    this.props.deleteItemFormCart(itemId);  this.props.setCartTotalAmount();
+    this.props.deleteItemFormCart(itemId);
+    this.props.setCartTotalAmount();
   };
 
   componentDidMount() {
