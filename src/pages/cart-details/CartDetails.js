@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchShoppingCartById } from "../../actions/";
+import { fetchShoppingCartById, setCartTotalAmount } from "../../actions/";
 import LocalStorageHandler from "../../data/local-storage/LocalStorage";
 import TotalDisplay from "../../components/total-display/TotalDisplay";
 
@@ -53,31 +53,36 @@ class ConnectedCartDetail extends React.Component {
           </table>
         </div>
         <div>
-          <TotalDisplay total={this.state.totalAmount} />
+        <TotalDisplay total={this.props.total}/>
         </div>
       </div>
     );
   }
 
   componentDidMount() {
+    console.log(this.props.cart);
     if (this.props.cart.length === 0) {
       let shoppingCartId = LocalStorageHandler.getShoppingCartIdFromLocalStorage();
       if (!shoppingCartId) {
         this.props.fetchShoppingCartById(shoppingCartId);
       }
     }
+    this.props.setCartTotalAmount();
+    console.log(this.props.total);
   }
+
 }
 
 const mapStateToProps = state => {
   return {
-    cart: state.cart.list
+    cart: state.cart.list, 
+    total: state.cart.total
   };
 };
 
 const CartDetail = connect(
   mapStateToProps,
-  { fetchShoppingCartById }
+  { fetchShoppingCartById, setCartTotalAmount }
 )(ConnectedCartDetail);
 
 export default CartDetail;

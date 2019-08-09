@@ -9,7 +9,8 @@ import {
   SHOW_MESSAGE,
   HIDE_MESSAGE,
   ADD_PRODUCT_TO_CART,
-  LOAD_SHOPPING_CART
+  LOAD_SHOPPING_CART,
+  SET_CART_TOTAL_AMOUNT
 } from "./constants";
 
 import {
@@ -142,4 +143,8 @@ export const fetchShoppingCartById = cartId => async dispatch => {
         payload: { message: "Couldn't get your shopping cart. try again later" }
       });
     });
+};
+
+export const setCartTotalAmount = () => {
+  return { type: SET_CART_TOTAL_AMOUNT };
 };

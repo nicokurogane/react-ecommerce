@@ -9,3 +9,4 @@ export const SHOW_MESSAGE = "SHOW_MESSAGE";
 export const HIDE_MESSAGE = "HIDE_MESSAGE";
 export const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
 export const LOAD_SHOPPING_CART = "LOAD_SHOPPING_CART";
+export const SET_CART_TOTAL_AMOUNT = ""

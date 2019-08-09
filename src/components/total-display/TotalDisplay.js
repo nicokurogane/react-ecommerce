@@ -4,7 +4,7 @@ const TotalDisplay = (props) => {
     const {total}  = props;
   return(
     <div>
-        <span>{total}</span>
+        <span>{total * 1.06}</span>
     </div>
   );
 }
