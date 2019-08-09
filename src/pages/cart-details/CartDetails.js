@@ -3,12 +3,15 @@ import { connect } from "react-redux";
 import {
   fetchShoppingCartById,
   setCartTotalAmount,
-  deleteAllCartItems
+  deleteAllCartItems,
+  deleteItemFormCart
 } from "../../actions/";
 import LocalStorageHandler from "../../data/local-storage/LocalStorage";
 import TotalDisplay from "../../components/total-display/TotalDisplay";
+import RemoveButton from "../../components/remove-button/RemoveButton";
 
 import CurrencyFormatter from "../../utilities/CurrencyFormatter";
+
 import "./cart-detail.css";
 
 class ConnectedCartDetail extends React.Component {
@@ -24,6 +27,7 @@ class ConnectedCartDetail extends React.Component {
                 <th>price</th>
                 <th>quantity</th>
                 <th>subtotal</th>
+                <th />
               </tr>
             </thead>
             <tbody>
@@ -50,14 +54,21 @@ class ConnectedCartDetail extends React.Component {
                     <td>{CurrencyFormatter.formatNumberToUSCurrency(price)}</td>
                     <td>{quantity}</td>
                     <td>
-                      {CurrencyFormatter.formatNumberToUSCurrency(subtotal)}
+                      <span>
+                        {CurrencyFormatter.formatNumberToUSCurrency(subtotal)}
+                      </span>
+                    </td>
+                    <td>
+                      <RemoveButton
+                        itemId={item_id}
+                        onRemoveItemClick={this.onRemoveItemClick}
+                      />
                     </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
-
           <div
             className="cart-actions-container"
             style={{ display: this.props.cart.length > 0 ? "block" : "none" }}
@@ -81,8 +92,12 @@ class ConnectedCartDetail extends React.Component {
     this.props.deleteAllCartItems();
   };
 
+  onRemoveItemClick = itemId => {
+
+    this.props.deleteItemFormCart(itemId);  this.props.setCartTotalAmount();
+  };
+
   componentDidMount() {
-    console.log(this.props.cart);
     if (this.props.cart.length === 0) {
       let shoppingCartId = LocalStorageHandler.getShoppingCartIdFromLocalStorage();
       if (shoppingCartId) {
@@ -102,7 +117,12 @@ const mapStateToProps = state => {
 
 const CartDetail = connect(
   mapStateToProps,
-  { fetchShoppingCartById, setCartTotalAmount, deleteAllCartItems }
+  {
+    fetchShoppingCartById,
+    setCartTotalAmount,
+    deleteAllCartItems,
+    deleteItemFormCart
+  }
 )(ConnectedCartDetail);
 
 export default CartDetail;

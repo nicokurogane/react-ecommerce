@@ -1,0 +1,6 @@
+
+.remove-item-button{
+    border:  0;
+    background-color: transparent;
+    align-items: flex-end;
+  }
