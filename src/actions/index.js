@@ -10,7 +10,9 @@ import {
   HIDE_MESSAGE,
   ADD_PRODUCT_TO_CART,
   LOAD_SHOPPING_CART,
-  SET_CART_TOTAL_AMOUNT
+  SET_CART_TOTAL_AMOUNT,
+  DELETE_ITEM_FROM_CART,
+  CLEAR_CART
 } from "./constants";
 
 import {
@@ -148,3 +150,7 @@ export const fetchShoppingCartById = cartId => async dispatch => {
 export const setCartTotalAmount = () => {
   return { type: SET_CART_TOTAL_AMOUNT };
 };
+
+export const deleteItemFormCart = (itemId) =>{
+  return { type: DELETE_ITEM_FROM_CART, payload: itemId}
+}

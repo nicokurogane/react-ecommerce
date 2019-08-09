@@ -1,6 +1,26 @@
 .cart-detail-container{
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.product-image{
+  width: 100px;
+  height: 100px;
+}
+
+.product-list-table{
+  border-spacing: 0;
+}
+
+.product-list-table th{
+  padding: 4vh;
+  border-bottom: 1px solid;
+  border-collapse: collapse;
+}
+
+.product-list-table td{
+  padding: 4vh;
 }
