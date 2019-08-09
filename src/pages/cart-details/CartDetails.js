@@ -10,6 +10,7 @@ import LocalStorageHandler from "../../data/local-storage/LocalStorage";
 import TotalDisplay from "../../components/total-display/TotalDisplay";
 import RemoveButton from "../../components/remove-button/RemoveButton";
 import ShippingDetail from "../../components/shipping-detail/ShippingDetail";
+import Modal from "../../components/modal/Modal";
 
 import CurrencyFormatter from "../../utilities/CurrencyFormatter";
 
@@ -85,6 +86,13 @@ class ConnectedCartDetail extends React.Component {
         <div>
           <TotalDisplay total={this.props.total} />
           <ShippingDetail />
+        </div>
+        <div>
+          {/* content={this.renderContentProp()}   
+          header="Delete this?"                
+          actions={this.renderActionButtons()}
+          onDismiss={this.onDismiss}*/}
+          <Modal />
         </div>
       </div>
     );

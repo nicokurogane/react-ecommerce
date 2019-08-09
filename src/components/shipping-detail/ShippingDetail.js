@@ -11,6 +11,7 @@ import "./shipping-detail.css";
 class ShippingDetail extends React.Component {
   state = {
     shippingRegions: [],
+    selectedRegion: "",
     shippingCostAndDays: []
   };
 
@@ -37,14 +38,15 @@ class ShippingDetail extends React.Component {
       });
   }
 
-  handleRegionClick = id => {
+  handleRegionClick = (id,region) => {
     if (id === 1) return;
 
     getShippingCostAndDaysByRegionId(id)
       .then(response => {
         console.log(response);
         this.setState({
-          shippingCostAndDays: response.data
+          shippingCostAndDays: response.data,
+          selectedRegion: region
         });
       })
       .catch(err => console.log(err));
@@ -57,6 +59,7 @@ class ShippingDetail extends React.Component {
           Select Region
           <img src={arrowDown} alt="menu-down" className="arrow-menu" />
         </button>
+        <span>{this.state.selectedRegion}</span>
         <div className="dropdown-content">
           {this.state.shippingRegions.map(region => {
             const { shipping_region_id, shipping_region } = region;
@@ -64,7 +67,7 @@ class ShippingDetail extends React.Component {
               <div className="region-item" key={shipping_region_id}>
                 <button
                   className="link-submenu"
-                  onClick={() => this.handleRegionClick(shipping_region_id)}
+                  onClick={() => this.handleRegionClick(shipping_region_id,shipping_region)}
                 >
                   {shipping_region}
                 </button>
