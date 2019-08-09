@@ -22,6 +22,17 @@
 }
 
 
+.cart-counter{
+  padding: 0.5vh;
+  border-radius: 20%;
+  position: absolute;
+  top:0;
+  right: 0;
+  background-color: #d84315;
+
+}
+
+
 /* LINK EFFECT*/
 .link-header {
   text-decoration: none;
