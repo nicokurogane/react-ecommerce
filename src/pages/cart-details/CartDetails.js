@@ -9,6 +9,7 @@ import {
 import LocalStorageHandler from "../../data/local-storage/LocalStorage";
 import TotalDisplay from "../../components/total-display/TotalDisplay";
 import RemoveButton from "../../components/remove-button/RemoveButton";
+import ActionButton from "../../components/action-button/ActionButton";
 import ShippingDetail from "../../components/shipping-detail/ShippingDetail";
 import Modal from "../../components/modal/Modal";
 
@@ -17,6 +18,8 @@ import CurrencyFormatter from "../../utilities/CurrencyFormatter";
 import "./cart-detail.css";
 
 class ConnectedCartDetail extends React.Component {
+  state = { showModalConfirmation: false };
+
   render() {
     return (
       <div className="cart-detail-container">
@@ -72,15 +75,18 @@ class ConnectedCartDetail extends React.Component {
             </tbody>
           </table>
           <div
-            className="cart-actions-container"
             style={{ display: this.props.cart.length > 0 ? "block" : "none" }}
           >
-            <button
-              className="clear-cart-button"
-              onClick={this.onClearCartClick}
-            >
-              Clear Cart
-            </button>
+            <div className="cart-actions-container">
+              <ActionButton
+                text="Clear Cart"
+                onActionClick={this.onClearCartClick}
+              />
+              <ActionButton
+                text="Place Order"
+                onActionClick={this.onPlaceOrderClick}
+              />
+            </div>
           </div>
         </div>
         <div>
@@ -88,15 +94,42 @@ class ConnectedCartDetail extends React.Component {
           <ShippingDetail />
         </div>
         <div>
-          {/* content={this.renderContentProp()}   
-          header="Delete this?"                
-          actions={this.renderActionButtons()}
-          onDismiss={this.onDismiss}*/}
-          <Modal />
+          <Modal
+            title="Order Complete"
+            content={this.renderContentProp()}
+            actions={this.renderActionsButtons()}
+            showModal={this.state.showModalConfirmation}
+            onDismiss={this.onDismissModal}
+          />
         </div>
       </div>
     );
   }
+
+  renderContentProp = () => {
+    return (
+      <>
+        <span> Your order was placed! </span>
+        <span> We send to your e-mail a confirmation of your order </span>
+      </>
+    );
+  };
+
+  renderActionsButtons = () => {
+    return (
+      <>
+        <ActionButton text="Ok!" onActionClick={this.onDismissModal} />
+      </>
+    );
+  };
+
+  onPlaceOrderClick = () => {
+    this.setState({ showModalConfirmation: true });
+  };
+
+  onDismissModal = () => {
+    this.setState({ showModalConfirmation: false });
+  };
 
   onClearCartClick = () => {
     this.props.deleteAllCartItems();

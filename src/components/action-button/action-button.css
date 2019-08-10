@@ -1,0 +1,11 @@
+.action-button {
+  background-color: #0f1c38;
+  color: #ffffff;
+  padding: 2vh;
+  border: 0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.action-button:hover {
+  background-color: #eb7107;
+}
