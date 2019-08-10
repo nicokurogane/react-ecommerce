@@ -36,10 +36,10 @@
   margin-left: 1.5vw;
 }
 
-.empty-cart-message{
+.empty-cart-message {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.20rem;
+  font-size: 1.2rem;
 }

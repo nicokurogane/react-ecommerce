@@ -24,7 +24,8 @@ import {
   getProductDetails,
   getProductReviews,
   sendProductToCart,
-  getShoppingCart
+  getShoppingCart,
+  deleteAllItemsFromCart
 } from "../data/request-handler";
 
 export const fetchProducts = () => async dispatch => {
@@ -155,6 +156,16 @@ export const deleteItemFormCart = itemId => {
   return { type: DELETE_ITEM_FROM_CART, payload: itemId };
 };
 
-export const deleteAllCartItems = () => {
-  return { type: CLEAR_CART };
+export const deleteAllCartItems = cartId => async dispatch => {
+  await deleteAllItemsFromCart(cartId)
+    .then(() => {
+      dispatch({ type: CLEAR_CART });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: SHOW_MESSAGE,
+        payload: { message: "Couldn't get your shopping cart. try again later" }
+      });
+    });
 };

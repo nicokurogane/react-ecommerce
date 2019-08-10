@@ -146,17 +146,22 @@ class ConnectedCartDetail extends React.Component {
 
   onDismissModal = () => {
     this.setState({ showModalConfirmation: false });
+    this.clearCart();
   };
 
   onClearCartClick = () => {
-    this.props.deleteAllCartItems();
-    this.props.setCartTotalAmount();
+    this.clearCart();
   };
 
   onRemoveItemClick = itemId => {
     this.props.deleteItemFormCart(itemId);
     this.props.setCartTotalAmount();
   };
+
+  clearCart(){
+    this.props.deleteAllCartItems(LocalStorageHandler.getShoppingCartIdFromLocalStorage());
+    this.props.setCartTotalAmount();
+  }
 
   componentDidMount() {
     if (this.props.cart.length === 0) {

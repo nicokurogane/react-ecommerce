@@ -43,7 +43,6 @@ class ShippingDetail extends React.Component {
 
     getShippingCostAndDaysByRegionId(id)
       .then(response => {
-        console.log(response);
         this.setState({
           shippingCostAndDays: response.data,
           selectedRegion: region
@@ -70,7 +69,7 @@ class ShippingDetail extends React.Component {
                   onClick={() =>
                     this.handleRegionClick(shipping_region_id, shipping_region)
                   }
-                >
+                > 
                   {shipping_region}
                 </button>
               </div>
@@ -93,7 +92,6 @@ class ShippingDetail extends React.Component {
             return (
               <div key={shipping_id}>
                 <span>{shipping_type}</span>
- 
               </div>
             );
           })}
