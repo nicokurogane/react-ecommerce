@@ -69,7 +69,7 @@ class ShippingDetail extends React.Component {
                   onClick={() =>
                     this.handleRegionClick(shipping_region_id, shipping_region)
                   }
-                > 
+                >
                   {shipping_region}
                 </button>
               </div>
@@ -88,7 +88,7 @@ class ShippingDetail extends React.Component {
         </div>
         <div className="shipping-days-cost-container">
           {this.state.shippingCostAndDays.map(data => {
-            const { shipping_id, shipping_type, shipping_cost } = data;
+            const { shipping_id, shipping_type } = data;
             return (
               <div key={shipping_id}>
                 <span>{shipping_type}</span>

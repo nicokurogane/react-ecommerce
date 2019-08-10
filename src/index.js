@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
@@ -12,7 +17,8 @@ import * as serviceWorker from "./serviceWorker";
 
 import Home from "./pages/home/Home";
 import ConnectedProductDetails from "./pages/product-details/ProductDetails";
-import CartDetails from './pages/cart-details/CartDetails';
+import CartDetails from "./pages/cart-details/CartDetails";
+import PageNotFound from "./pages/page-not-found/PageNotFound";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -29,6 +35,7 @@ ReactDOM.render(
             component={ConnectedProductDetails}
           />
           <Route path="/" exact component={Home} />
+          <Route component={PageNotFound} />
         </Switch>
       </App>
     </Router>
