@@ -7,7 +7,7 @@ const ModalWindow = props => {
   console.table(props);
   const { title, content, actions, showModal } = props;
   return (
-    <div style={{display: showModal? "block":"none" }}>
+    <div style={{ display: showModal ? "block" : "none" }}>
       <div className="background">
         <div className="modal">
           <div className="modal-title">{title}</div>

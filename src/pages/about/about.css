@@ -1,0 +1,9 @@
+.about-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.history-text {
+  padding: 0 8vw;
+}

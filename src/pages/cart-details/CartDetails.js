@@ -33,7 +33,10 @@ class ConnectedCartDetail extends React.Component {
         <span>
           There are no items on your cart. Why don't you buy something?
         </span>
-        <div>  <Link to="/">click here to go back</Link></div>
+        <div>
+          {" "}
+          <Link to="/">click here to go back</Link>
+        </div>
       </div>
     );
   };
@@ -158,8 +161,10 @@ class ConnectedCartDetail extends React.Component {
     this.props.setCartTotalAmount();
   };
 
-  clearCart(){
-    this.props.deleteAllCartItems(LocalStorageHandler.getShoppingCartIdFromLocalStorage());
+  clearCart() {
+    this.props.deleteAllCartItems(
+      LocalStorageHandler.getShoppingCartIdFromLocalStorage()
+    );
     this.props.setCartTotalAmount();
   }
 

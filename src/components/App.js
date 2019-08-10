@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { fetchShoppingCartById } from "../actions";
 import MessagePopUp from "./message-popup/MessagePopUp";
+import LocalStorageHandler from "../data/local-storage/LocalStorage";
 
 import cartImg from "../assets/cart.png";
 
@@ -17,8 +19,8 @@ class ConnectedApp extends React.Component {
             <Link to="/" className="link-header">
               Home
             </Link>
-            <Link to="/" className="link-header">
-              Login
+            <Link to="/about" className="link-header">
+              About
             </Link>
             <Link to="/cart/details" className="link-header">
               <img src={cartImg} alt="cart" />
@@ -38,6 +40,15 @@ class ConnectedApp extends React.Component {
       </header>
     );
   }
+
+  componentDidMount() {
+    if (this.props.cart === undefined) {
+      let shoppingCartId = LocalStorageHandler.getShoppingCartIdFromLocalStorage();
+      if (shoppingCartId) {
+        this.props.fetchShoppingCartById(shoppingCartId);
+      }
+    }
+  }
 }
 
 const mapStateToProps = state => {
@@ -48,7 +59,7 @@ const mapStateToProps = state => {
 
 const App = connect(
   mapStateToProps,
-  {}
+  { fetchShoppingCartById }
 )(ConnectedApp);
 
 export default App;

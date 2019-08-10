@@ -8,7 +8,7 @@ const ecommerceApp = combineReducers({
   products: productsReducer,
   categories: categoriesReducer,
   message: messageReducer,
-  cart: cartReducer,
+  cart: cartReducer
 });
 
 export default ecommerceApp;

@@ -8,7 +8,7 @@ class LocalStorageHandler {
   static getShoppingCartIdFromLocalStorage() {
     if (localStorage.getItem(SHOPPING_CART_KEY) !== null)
       return JSON.parse(localStorage.getItem(SHOPPING_CART_KEY));
-    else return '';
+    else return "";
   }
 }
 

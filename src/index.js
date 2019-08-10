@@ -1,11 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
@@ -15,6 +10,7 @@ import "./index.css";
 import App from "./components/App.js";
 import * as serviceWorker from "./serviceWorker";
 
+import About from "./pages/about/About";
 import Home from "./pages/home/Home";
 import ConnectedProductDetails from "./pages/product-details/ProductDetails";
 import CartDetails from "./pages/cart-details/CartDetails";
@@ -29,6 +25,7 @@ ReactDOM.render(
     <Router>
       <App>
         <Switch>
+          <Route path="/about" exact component={About} />
           <Route path="/cart/details" exact component={CartDetails} />
           <Route
             path="/product-detail/:id"

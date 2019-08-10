@@ -1,9 +1,9 @@
 .app-header {
   background-color: #0f1c38;
   color: white;
-  padding:  5vh;
+  padding: 5vh;
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
 }
 
 .container {
@@ -11,30 +11,22 @@
   justify-content: center;
 }
 
-
-.links-container{
+.links-container {
   display: flex;
 }
 
-.link-header{
-  color: #ffffff;
-  margin-right: 2vh;
-}
-
-
-.cart-counter{
+.cart-counter {
   padding: 0.5vh;
   border-radius: 20%;
   position: absolute;
-  top:0;
+  top: 0;
   right: 0;
   background-color: #d84315;
-
 }
-
 
 /* LINK EFFECT*/
 .link-header {
+  margin-right: 2vh;
   text-decoration: none;
   line-height: 1;
   position: relative;
@@ -68,4 +60,3 @@
   transform: translateY(0);
   transition: transform 0.25s ease-out;
 }
-

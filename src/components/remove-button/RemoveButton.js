@@ -10,10 +10,7 @@ class RemoveButton extends React.Component {
 
   render() {
     return (
-      <button
-        className="remove-item-button"
-        onClick={this.handleClick}
-      >
+      <button className="remove-item-button" onClick={this.handleClick}>
         <img src={closeCircle} alt="remove product" />
       </button>
     );
