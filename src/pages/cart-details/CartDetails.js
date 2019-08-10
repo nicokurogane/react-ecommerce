@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   fetchShoppingCartById,
   setCartTotalAmount,
@@ -21,6 +22,23 @@ class ConnectedCartDetail extends React.Component {
   state = { showModalConfirmation: false };
 
   render() {
+    return this.props.cart.length > 0
+      ? this.renderCartDetails()
+      : this.renderEmptyCartMessage();
+  }
+
+  renderEmptyCartMessage = () => {
+    return (
+      <div className="empty-cart-message">
+        <span>
+          There are no items on your cart. Why don't you buy something?
+        </span>
+        <div>  <Link to="/">click here to go back</Link></div>
+      </div>
+    );
+  };
+
+  renderCartDetails = () => {
     return (
       <div className="cart-detail-container">
         <div className="product-list">
@@ -74,19 +92,18 @@ class ConnectedCartDetail extends React.Component {
               })}
             </tbody>
           </table>
-          <div
-            style={{ display: this.props.cart.length > 0 ? "block" : "none" }}
-          >
-            <div className="cart-actions-container">
-              <ActionButton
-                text="Clear Cart"
-                onActionClick={this.onClearCartClick}
-              />
-              <ActionButton
-                text="Place Order"
-                onActionClick={this.onPlaceOrderClick}
-              />
-            </div>
+
+          <div className="cart-actions-container">
+            <ActionButton
+              className="action-button"
+              text="Clear Cart"
+              onActionClick={this.onClearCartClick}
+            />
+            <ActionButton
+              className="action-button"
+              text="Place Order"
+              onActionClick={this.onPlaceOrderClick}
+            />
           </div>
         </div>
         <div>
@@ -104,7 +121,7 @@ class ConnectedCartDetail extends React.Component {
         </div>
       </div>
     );
-  }
+  };
 
   renderContentProp = () => {
     return (

@@ -32,14 +32,14 @@
   align-items: center;
 }
 
-.clear-cart-button {
-  background-color: #0f1c38;
-  color: #ffffff;
-  padding: 2vh;
-  border: 0;
-  transition: background-color 0.2s ease-in-out;
+.action-button {
+  margin-left: 1.5vw;
 }
 
-.clear-cart-button:hover {
-  background-color: #eb7107;
+.empty-cart-message{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.20rem;
 }

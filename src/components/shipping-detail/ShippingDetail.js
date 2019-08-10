@@ -18,7 +18,7 @@ class ShippingDetail extends React.Component {
   render() {
     return (
       <div className="shipping-detail-container">
-        <h1>Shipping Detail</h1>
+        <h2>Shipping Details</h2>
         <div>{this.renderDropdownFilter()}</div>
         <div>{this.renderShippingCostAndDays()}</div>
       </div>
@@ -38,7 +38,7 @@ class ShippingDetail extends React.Component {
       });
   }
 
-  handleRegionClick = (id,region) => {
+  handleRegionClick = (id, region) => {
     if (id === 1) return;
 
     getShippingCostAndDaysByRegionId(id)
@@ -59,7 +59,7 @@ class ShippingDetail extends React.Component {
           Select Region
           <img src={arrowDown} alt="menu-down" className="arrow-menu" />
         </button>
-        <span>{this.state.selectedRegion}</span>
+
         <div className="dropdown-content">
           {this.state.shippingRegions.map(region => {
             const { shipping_region_id, shipping_region } = region;
@@ -67,7 +67,9 @@ class ShippingDetail extends React.Component {
               <div className="region-item" key={shipping_region_id}>
                 <button
                   className="link-submenu"
-                  onClick={() => this.handleRegionClick(shipping_region_id,shipping_region)}
+                  onClick={() =>
+                    this.handleRegionClick(shipping_region_id, shipping_region)
+                  }
                 >
                   {shipping_region}
                 </button>
@@ -81,17 +83,22 @@ class ShippingDetail extends React.Component {
 
   renderShippingCostAndDays = () => {
     return (
-      <div className="shipping-days-cost-container">
-        {this.state.shippingCostAndDays.map(data => {
-          const { shipping_id, shipping_type, shipping_cost } = data;
-          return (
-            <div key={shipping_id}>
-              <span>{shipping_type}</span>
-              <span>{shipping_cost}</span>
-            </div>
-          );
-        })}
-      </div>
+      <>
+        <div className="selected-region-content">
+          <span>{this.state.selectedRegion}</span>
+        </div>
+        <div className="shipping-days-cost-container">
+          {this.state.shippingCostAndDays.map(data => {
+            const { shipping_id, shipping_type, shipping_cost } = data;
+            return (
+              <div key={shipping_id}>
+                <span>{shipping_type}</span>
+ 
+              </div>
+            );
+          })}
+        </div>
+      </>
     );
   };
 }
